@@ -10,4 +10,6 @@
 
     - name: Print image list
       debug:
-        msg: "{{ result }}"
+        msg: "{{ result | json_query('openstack_image[*].
+              {name: name, id: id, os_distro: os_distro, status: status,
+              project: location.project.name}') }}"
